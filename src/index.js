@@ -1,18 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
-import HomePage from "./temp/HomePage";
-
-
+import { BrowserRouter } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import App from "./App";
+import "./App.css";
 
 ReactDOM.render(
   <BrowserRouter>
-    <Switch>
-      <Route ptch={'/'}>
-        <HomePage/>
-      </Route>
-    </Switch>
+    <App />
   </BrowserRouter>,
   document.getElementById("root")
 );
