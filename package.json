@@ -19,9 +19,7 @@
     "react-transition-group": "1.x"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "node server.js",
-    "heroku-postbuild": "webpack -p",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
