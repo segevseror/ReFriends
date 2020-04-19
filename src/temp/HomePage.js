@@ -89,7 +89,7 @@ class HomePage extends Component {
                   renderInput={params => (
                     <TextField
                       {...params}
-                      label="Combo box"
+                      label="Search Movies"
                       variant="outlined"
                     />
                   )}

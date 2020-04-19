@@ -5,7 +5,7 @@
 body {
   font-family: "Open Sans", sans-serif !important;
   /*background-color: black;*/
-  color: white;
+  color: black;
 }
 .borderTest {
   position: absolute;
@@ -20,5 +20,5 @@ body {
 }
 
 combo-box-demo{
-  background: white;
+  background: black;
 }

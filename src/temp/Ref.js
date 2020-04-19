@@ -36,14 +36,14 @@ const CardMovies = props => {
   };
 
   return (
-    <Col className={"col-4 pt-2 pb-2"}>
+    <Col md={4} xs={6} className={"pt-2 pb-2"}>
       <Row>
         <Col md={12}>
           <Row>
             <Col md={6}>
               <img src={props.img} className={"img-fluid"} />
             </Col>
-            <Col md={6} className={"pl-0"}>
+            <Col md={6} className={"pl-md-0"}>
               <Row className={"h-100"}>
                 <Col md={12}>
                   <Row>

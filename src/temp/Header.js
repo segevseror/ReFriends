@@ -8,15 +8,11 @@ class Header extends Component {
       <Col xl={12} className={'p-0'}>
         <Navbar bg="dark" variant="dark" >
 
-          <Navbar.Brand href="/">Navbar</Navbar.Brand>
+          <Navbar.Brand href="/">ReFriends</Navbar.Brand>
           <Nav className="mr-auto">
             <NavLink exact className={'nav-link'} to="/" >Home</NavLink>
             <NavLink  className={'nav-link'} to="/ref" >ref</NavLink>
           </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-info">Search</Button>
-          </Form>
         </Navbar>
       </Col>
     );
