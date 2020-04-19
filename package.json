@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "",
   "dependencies": {
     "@material-ui/core": "^4.9.10",
     "@material-ui/lab": "^4.0.0-alpha.49",
@@ -10,6 +11,7 @@
     "@testing-library/user-event": "^7.1.2",
     "@types/react-transition-group": "^4.2.4",
     "bootstrap": "^4.4.1",
+    "express-favicon": "^2.0.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
