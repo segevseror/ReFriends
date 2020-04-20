@@ -21,7 +21,6 @@ class HomePage extends Component {
         .then(
           result => {
             if (result.results) {
-              console.log('resukt' , result.results);
               const resultSearch = result.results
                 .filter(function(value) {
                   if (!value.title) {

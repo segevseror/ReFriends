@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomePage from "./temp/HomePage";
 import Ref from "./temp/Ref";
+import Login from "./temp/Login";
 import Header from "./temp/Header";
 import { Container, Row } from "react-bootstrap";
 import "./App.css";
@@ -13,9 +14,8 @@ export default function App() {
         <Row >
           <Header />
           <Switch>
-            <Route path="/test">
-              <div>
-              </div>
+            <Route path="/login">
+              <Login/>
             </Route>
             <Route path="/ref" >
               <Ref />
