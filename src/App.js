@@ -14,18 +14,18 @@ class App extends Component  {
     super(props);
 
 
-    const checkUserReq = {
-      method: 'GET',
-    };
-    fetch('http://netflixbackend.x/user/getuser', checkUserReq)
-      .then(async response => response.json())
-      .then(data => {
-        console.log('data', data);
-        if (data.act == 'true') {
-        } else {
-          return false;
-        }
-      });
+    // const checkUserReq = {
+    //   method: 'GET',
+    // };
+    // fetch('http://netflixbackend.x/user/getuser', checkUserReq)
+    //   .then(async response => response.json())
+    //   .then(data => {
+    //     console.log('data', data);
+    //     if (data.act == 'true') {
+    //     } else {
+    //       return false;
+    //     }
+    //   });
 
   }
   render() {

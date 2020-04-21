@@ -27,7 +27,7 @@ function Login() {
       method: 'POST',
       body: formData
     };
-    fetch('http://netflixbackend.x/user/login', checkUserReq)
+    fetch('https://backend-api-segev.herokuapp.com/user/login', checkUserReq)
       .then( response => response.json())
       .then(data => {
         console.log('data', data);
@@ -42,7 +42,7 @@ function Login() {
   };
 
   const check = (e) => {
-    fetch('http://netflixbackend.x/user/getuser', {method: 'GET'})
+    fetch('https://backend-api-segev.herokuapp.com/user/getuser', {method: 'GET'})
       .then( response => response.json())
       .then(data => {
         console.log('data check', data);
