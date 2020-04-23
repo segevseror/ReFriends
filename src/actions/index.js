@@ -10,6 +10,11 @@ export const loggedReducer = ()=>{
     type: 'SIGN_IN'
   }
 };
+export const logOutReducer = ()=>{
+    return {
+        type: 'SIGN_OUT'
+    }
+};
 
 export const loggedOut = () => {
   return{
