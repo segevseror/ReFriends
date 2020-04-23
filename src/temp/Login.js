@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {loggedReducer, userNameState} from "../actions";
+import '../config';
 
 function Login() {
     const dispatch = useDispatch();
@@ -23,11 +24,13 @@ function Login() {
     formData.append('password', password);
     formData.append('username', userName);
 
-    const checkUserReq = {
+    const configFetch = {
       method: 'POST',
-      body: formData
+      body: formData,
+      credentials: 'include',
+      mode:'cors'
     };
-    fetch('http://netflixbackend.x/user/login', checkUserReq)
+    fetch('https://backend-api-segev.herokuapp.com/user/login', configFetch)
       .then( response => response.json())
       .then(data => {
         console.log('data', data);
@@ -42,7 +45,15 @@ function Login() {
   };
 
   const check = (e) => {
-    fetch('http://netflixbackend.x/user/getuser', {method: 'GET'})
+
+    console.log(global.config.urlRequest);
+    return false;
+    const configFetch = {
+      method: 'GET',
+      credentials: 'include',
+      mode:'cors'
+    };
+    fetch('https://backend-api-segev.herokuapp.com/user/getuser', configFetch)
       .then( response => response.json())
       .then(data => {
         console.log('data check', data);
