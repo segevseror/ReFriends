@@ -5,20 +5,31 @@
 body {
   font-family: "Open Sans", sans-serif !important;
   /*background-color: black;*/
-  color: black;
+
 }
-.borderTest {
-  position: absolute;
-  margin: 0 auto;
-  right: 0;
-  left: 0;
-  min-height: 100%;
-  border: solid 1px #dce3e5;
+.navbar{
+  background-color: #032541 !important;
 }
-.backgorund {
-  border: solid 1px #343a40;
+.boxnovies{
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid #e3e3e3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 100%;
 }
 
-combo-box-demo{
-  background: black;
-}
+/*.borderTest {*/
+/*  position: absolute;*/
+/*  margin: 0 auto;*/
+/*  right: 0;*/
+/*  left: 0;*/
+/*  min-height: 100%;*/
+/*  border: solid 1px #dce3e5;*/
+/*}*/
+/*.backgorund {*/
+/*  border: solid 1px #343a40;*/
+/*}*/
+
+/*combo-box-demo{*/
+/*  background: black;*/
+/*}*/

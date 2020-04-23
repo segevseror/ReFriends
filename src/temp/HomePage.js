@@ -83,7 +83,7 @@ class HomePage extends Component {
                   onChange={this.handleSelect }
                   style={{ background: "white", borderRadius: "6px" }}
                   renderOption={ option => {
-                    return (<span>{(option.image ? <img width={'30px'} src={'https://image.tmdb.org/t/p/w220_and_h330_face'+option.image} /> : '')} {option.title}</span>)
+                    return (<span>{(option.image ? <img width={'30px'} alt={'img'} src={'https://image.tmdb.org/t/p/w220_and_h330_face'+option.image} /> : '')} {option.title}</span>)
                   }}
                   renderInput={params => (
                     <TextField

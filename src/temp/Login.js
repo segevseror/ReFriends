@@ -4,26 +4,22 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {loggedReducer, userNameState} from "../actions";
-import { Router } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import '../config';
 import auth from '../auth';
-import history from '../history';
 
 function Login() {
     const dispatch = useDispatch();
-
-
     const [userName, setUser] = useState("");
     const [password, setPass] = useState("");
     const [errorsMessage, setErrorsMessage] = useState("");
+    const [redirect , setRedirect] = useState(false);
 
     const submit = () => {
-
         if (!userName || !password) {
             setErrorsMessage('יש להזין את כל הפרטים');
             return false;
         }
-
         var formData = new FormData();
         formData.append('password', password);
         formData.append('username', userName);
@@ -34,15 +30,15 @@ function Login() {
             credentials: 'include',
             mode: 'cors'
         };
-
         fetch(global.config.urlRequest+'/user/login', configFetch)
             .then(response => response.json())
             .then(data => {
-                if (data.act == 'true') {
+                if (data.act === 'true') {
                     dispatch(loggedReducer());
                     dispatch(userNameState(userName));
-                    auth.login(()=>{})
-                } else if(data.act == 'false') {
+                    auth.login(()=>{});
+                    setRedirect(true);
+                } else if(data.act === 'false') {
                     setErrorsMessage(data.message);
                     return false;
                 }else{
@@ -52,29 +48,16 @@ function Login() {
             });
     };
 
-    const check = (e) => {
-        const configFetch = {
-            method: 'GET',
-            credentials: 'include',
-            mode: 'cors'
-        };
-        fetch(global.config.urlRequest+'/user/getuser', configFetch)
-            .then(response => response.json())
-            .then(data => {
-                console.log('data check', data);
-
-            }).catch((e) => {
-            console.log('e', e);
-        })
-    };
     const isLogged = useSelector(state => state.logged);
+
 
     return (
         <Col md={12}>
             <Row className={"justify-content-center text-center"}>
                 <Col md={3}>
                     <form>
-                        <Col hidden={!(userName != '' && isLogged)}>
+                        {redirect ? <Redirect to={'/'}/>  : ''}
+                        <Col hidden={!(userName !== '' && isLogged)}>
                             Hello {userName}
                         </Col>
                         <div hidden={isLogged}>
@@ -118,9 +101,6 @@ function Login() {
                             {errorsMessage}
                         </Col>
                     </form>
-                </Col>
-                <Col md={12}>
-                    <button onClick={check}>click check</button>
                 </Col>
             </Row>
         </Col>

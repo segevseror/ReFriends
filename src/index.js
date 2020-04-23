@@ -1,13 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter } from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import "./App.css";
-import { createStore } from "redux";
+import {createStore} from "redux";
 import globalReducer from "./reducers";
 import {Provider} from "react-redux";
+
 
 const store = createStore(
   globalReducer,
@@ -15,10 +16,12 @@ const store = createStore(
 );
 
 
+
+
 ReactDOM.render(
-  <BrowserRouter >
+  <BrowserRouter>
     <Provider store={store}>
-    <App />
+      <App/>
     </Provider>
   </BrowserRouter>,
   document.getElementById("root")

@@ -2,75 +2,64 @@ import React from "react";
 import {Col, Nav, Navbar} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {loggedReducer, logOutReducer, userNameState} from "../actions";
+import {logOutReducer} from "../actions";
 import '../config';
 import auth from '../auth';
 
 const LoginBox = (props) => {
-    const isLogged = useSelector(state => state.logged);
-    const logOut = () => {
-        if (isLogged) {
-            const configFetch = {
-                method: 'GET',
-                credentials: 'include',
-                mode: 'cors'
-            };
-            fetch(global.config.urlRequest + '/user/logout', configFetch)
-                .then(response => response.json())
-                .then(data => {
-                    if (data == true) {
-                        auth.logout(() => {});
-                        props.dispatch(logOutReducer());
-                    }
-                });
+  const isLogged = useSelector(state => state.logged);
+  console.log('isLogged?' , isLogged);
 
-        }
-    };
 
-    return (
-        <div>
-            <NavLink exact className={"nav-link"} to={isLogged ? '/logOut' : '/logIn'} onClick={logOut}>
-                {isLogged ? 'LogOut' : 'LogIn'}
-            </NavLink>
-        </div>
-    );
-};
 
-const Header = (props) => {
-
-    const dispatch = useDispatch();
-
-    const configFetch = {
+  const logOut = () => {
+    if (isLogged) {
+      const configFetch = {
         method: 'GET',
         credentials: 'include',
         mode: 'cors'
-    };
-    fetch(global.config.urlRequest + '/user/getuser', configFetch)
+      };
+      fetch(global.config.urlRequest + '/user/logout', configFetch)
         .then(response => response.json())
         .then(data => {
-            console.log('data', data);
-            if (data.act == 'true') {
-                dispatch(loggedReducer());
-            } else {
-            }
+          if (data === true) {
+            props.dispatch(logOutReducer());
+            auth.logout(() => {
+              window.location.href = '/login'
+            });
+
+          }
         });
 
+    }
+  };
 
-    return (
-        <Col xl={12} className={"p-0"}>
-            <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="/">ReFriends</Navbar.Brand>
-                <Nav className="mr-auto">
-                    <NavLink exact className={"nav-link"} to="/">
-                        Home
-                    </NavLink>
-                    <NavLink className={"nav-link"} to="/ref">
-                        ref
-                    </NavLink>
-                </Nav>
-                <LoginBox dispatch={dispatch}/>
-            </Navbar>
-        </Col>
-    );
+  return (
+    <div>
+      <NavLink exact className={"nav-link"} to={isLogged ? '/logOut' : '/logIn'} onClick={logOut}>
+        {isLogged ? 'LogOut' : 'LogIn'}
+      </NavLink>
+    </div>
+  );
+};
+
+const Header = (props) => {
+  const dispatch = useDispatch();
+  return (
+    <Col xl={12} className={"p-0"}>
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="/">ReFriends</Navbar.Brand>
+        <Nav className="mr-auto">
+          <NavLink exact className={"nav-link"} to="/">
+            Home
+          </NavLink>
+          <NavLink className={"nav-link"} to="/ref">
+            reference
+          </NavLink>
+        </Nav>
+        <LoginBox dispatch={dispatch}/>
+      </Navbar>
+    </Col>
+  );
 }
 export default Header;
