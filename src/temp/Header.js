@@ -6,14 +6,13 @@ import {logOutReducer} from "../actions";
 import '../config';
 import auth from '../auth';
 
+
+
+
 const LoginBox = (props) => {
-  const isLogged = useSelector(state => state.logged);
-  console.log('isLogged?' , isLogged);
-
-
 
   const logOut = () => {
-    if (isLogged) {
+    if (props.isLogged) {
       const configFetch = {
         method: 'GET',
         credentials: 'include',
@@ -33,17 +32,20 @@ const LoginBox = (props) => {
 
     }
   };
-
   return (
-    <div>
-      <NavLink exact className={"nav-link"} to={isLogged ? '/logOut' : '/logIn'} onClick={logOut}>
-        {isLogged ? 'LogOut' : 'LogIn'}
+    <Nav>
+      <NavLink exact className={"nav-link pr-0"} to={props.isLogged ? '/logOut' : '/logIn'} onClick={logOut}>
+        {props.isLogged ? 'LogOut' : 'LogIn'}/
       </NavLink>
-    </div>
+      <NavLink hidden={props.isLogged} className={"nav-link pl-0"} to="/register">
+        Register
+      </NavLink>
+    </Nav>
   );
 };
 
 const Header = (props) => {
+  const isLogged = useSelector(state => state.logged);
   const dispatch = useDispatch();
   return (
     <Col xl={12} className={"p-0"}>
@@ -57,7 +59,7 @@ const Header = (props) => {
             reference
           </NavLink>
         </Nav>
-        <LoginBox dispatch={dispatch}/>
+        <LoginBox dispatch={dispatch} isLogged={isLogged} />
       </Navbar>
     </Col>
   );

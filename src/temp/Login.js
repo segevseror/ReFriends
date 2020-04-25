@@ -61,7 +61,7 @@ function Login() {
                             Hello {userName}
                         </Col>
                         <div hidden={isLogged}>
-                            <Col md={12}>
+                            <Col md={12} className={'mt-3'}>
                                 <h3>
                                     <b>Login</b>
                                 </h3>
@@ -79,6 +79,7 @@ function Login() {
                             <Col md={12}>
                                 <TextField
                                     id="standard-basic"
+                                    type={'password'}
                                     fullWidth
                                     label="Password"
                                     onChange={e => {

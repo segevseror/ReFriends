@@ -18,18 +18,8 @@ body {
   height: 100%;
 }
 
-/*.borderTest {*/
-/*  position: absolute;*/
-/*  margin: 0 auto;*/
-/*  right: 0;*/
-/*  left: 0;*/
-/*  min-height: 100%;*/
-/*  border: solid 1px #dce3e5;*/
-/*}*/
-/*.backgorund {*/
-/*  border: solid 1px #343a40;*/
-/*}*/
-
-/*combo-box-demo{*/
-/*  background: black;*/
-/*}*/
+@media screen and (max-width: 480px) {
+  .navbar{
+    font-size: 10px;
+  }
+}

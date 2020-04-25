@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Col, Row} from "react-bootstrap";
+import {Col, Row, Spinner} from "react-bootstrap";
 
 const CardMovies = props => {
   const CardDetailesRow = props => {
@@ -10,11 +10,10 @@ const CardMovies = props => {
       paddingBottom: "15px",
       alignItems: "center"
     };
-
     var details = "";
     if (Array.isArray(props.data)) {
       details = props.data.map(function (value, key) {
-        return <span key={key}>{value}, </span>;
+        return <span key={key}>{value} {(key != props.data.length - 1 ? ',' : '' )} </span>;
       });
     } else {
       details = props.data;
@@ -22,7 +21,7 @@ const CardMovies = props => {
     return (
       <Col md={12}>
         <Row style={shereFriendsTitle}>
-          <Col className={"pr-0"}>
+          <Col className={"pr-0 col-auto"}>
             <b>{props.title}</b>
           </Col>
           <Col className={"text-right"}>{details}</Col>
@@ -34,6 +33,7 @@ const CardMovies = props => {
   const detailsbox = {
     alignSelf: "flex-end"
   };
+
 
 
   return (
@@ -54,8 +54,8 @@ const CardMovies = props => {
                 </Col>
                 <Col md={12} style={detailsbox}>
                   <Row>
-                    <CardDetailesRow title={"sharing"} data={["segev"]}/>
-                    <CardDetailesRow title={"Last Update"} data={"20/20/20"}/>
+                    <CardDetailesRow title={"sharing"} data={props.sharing}/>
+                    <CardDetailesRow title={"Last Update"} data={props.cdate}/>
                   </Row>
                 </Col>
               </Row>
@@ -68,6 +68,37 @@ const CardMovies = props => {
 };
 
 class Ref extends Component {
+
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      movies: []
+    };
+
+
+    try {
+      const configFetch = {
+        method: 'GET',
+        credentials: 'include',
+        mode: 'cors',
+      };
+      fetch(global.config.urlRequest + '/user/getmovies', configFetch)
+        .then(response => response.json())
+        .then(data => {
+          if (data.act === 'true') {
+            this.setState(state => ({
+              movies: Object.values(data.allmovies)
+            }))
+          }
+        });
+    } catch (e) {
+
+    }
+
+  }
+
+
   componentDidMount() {
     document.title = `Share With Friends`;
   }
@@ -76,55 +107,28 @@ class Ref extends Component {
     return (
       <Col md={12}>
         <Row>
-          <CardMovies
-            img={
-              "https://m.media-amazon.com/images/M/MV5BOTJiNDEzOWYtMTVjOC00ZjlmLWE0NGMtZmE1OWVmZDQ2OWJhXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UX182_CR0,0,182,268_AL_.jpg"
-            }
-            title={"Ad Astra"}
-            promo={"on the movies"}
-            data={["ness", "segev"]}
-          />
-
-          <CardMovies
-            img={
-              "https://m.media-amazon.com/images/M/MV5BMTNmMjAxMDItMTdmYS00ZmZmLWI3YjEtMDI1OGU0MTgwMjc4XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_UX182_CR0,0,182,268_AL_.jpg"
-            }
-            title={"Sonic the Hedgehog"}
-            promo={"on the movies"}
-            data={["ness", "segev"]}
-          />
-          <CardMovies
-            img={
-              "https://m.media-amazon.com/images/M/MV5BOTJiNDEzOWYtMTVjOC00ZjlmLWE0NGMtZmE1OWVmZDQ2OWJhXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UX182_CR0,0,182,268_AL_.jpg"
-            }
-            title={"Movies 3"}
-            promo={"on the movies"}
-            data={["ness", "segev"]}
-          />
-          <CardMovies
-            img={
-              "https://m.media-amazon.com/images/M/MV5BMTNmMjAxMDItMTdmYS00ZmZmLWI3YjEtMDI1OGU0MTgwMjc4XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_UX182_CR0,0,182,268_AL_.jpg"
-            }
-            title={"Sonic the Hedgehog"}
-            promo={"on the movies"}
-            data={["ness", "segev"]}
-          />
-          <CardMovies
-            img={
-              "https://m.media-amazon.com/images/M/MV5BMTNmMjAxMDItMTdmYS00ZmZmLWI3YjEtMDI1OGU0MTgwMjc4XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_UX182_CR0,0,182,268_AL_.jpg"
-            }
-            title={"Sonic the Hedgehog"}
-            promo={"on the movies"}
-            data={["ness", "segev"]}
-          />
-          <CardMovies
-            img={
-              "https://m.media-amazon.com/images/M/MV5BMTNmMjAxMDItMTdmYS00ZmZmLWI3YjEtMDI1OGU0MTgwMjc4XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_UX182_CR0,0,182,268_AL_.jpg"
-            }
-            title={"Sonic the Hedgehog"}
-            promo={"on the movies"}
-            data={["ness", "segev"]}
-          />
+          <Col md={12} className={'text-center mt-3'} hidden={this.state.movies.length > 0}>
+            <Spinner animation="border" variant="success mt-3"/>
+          </Col>
+          <Col md={12} hidden={this.state.movies.length === 0}>
+            <Row>
+              {
+                this.state.movies.map((value) => {
+                  console.log('logg' , value)
+                  return <CardMovies
+                    img={
+                      'https://image.tmdb.org/t/p/w500/'+value.img
+                    }
+                    title={value.title}
+                    promo={value.origin_date}
+                    sharing={[...value.sharing]}
+                    origin_date={value.origin_date}
+                    cdate={value.cdate}
+                  />
+                })
+              }
+            </Row>
+          </Col>
         </Row>
       </Col>
     );
