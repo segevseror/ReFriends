@@ -87,17 +87,18 @@ function Login() {
                                     }}
                                 />
                             </Col>
+                            <Col md={12} className={"mt-3 mb-3"}>
+                                <Button
+                                  variant="contained"
+                                  fullWidth
+                                  color="secondary"
+                                  onClick={submit}
+                                >
+                                    Connect
+                                </Button>
+                            </Col>
                         </div>
-                        <Col md={12} className={"mt-3 mb-3"}>
-                            <Button
-                                variant="contained"
-                                fullWidth
-                                color="secondary"
-                                onClick={submit}
-                            >
-                                Secondary
-                            </Button>
-                        </Col>
+
                         <Col className={'text-danger mb-3'}>
                             {errorsMessage}
                         </Col>
