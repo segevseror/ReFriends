@@ -3,8 +3,7 @@ import {Col, Row, Spinner} from "react-bootstrap";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import {useDispatch, useSelector} from "react-redux";
-import {loggedReducer, userNameState} from "../actions";
-import { Redirect } from 'react-router-dom';
+import {loggedReducer} from "../actions";
 import '../config';
 import auth from '../auth';
 
@@ -20,12 +19,10 @@ function Register(props) {
   const dispatch = useDispatch();
   const [{userNameArr , emailArr , passwordArr , whatsappArr } , setState] = useState(initState) ;
   const [userName, setUser] = useState("");
-  //const [userNameArr, setUserArr] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const [repassword, setRepassword] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
-  const [redirect , setRedirect] = useState(false);
   const [errorsMessage , setErrorsMessage] = useState('');
   const [loading , setLoading] = useState(false);
 
@@ -105,7 +102,6 @@ function Register(props) {
         </Col>
         <Col xl={3} md={6} sm={12} hidden={loading}>
           <form className={'row'}>
-            {redirect ? <Redirect to={'/'}/>  : ''}
             <Col hidden={isLogged}>
               <Row>
                 <Col md={12} className={'mt-3'}>

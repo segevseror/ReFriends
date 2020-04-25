@@ -35,10 +35,10 @@ const LoginBox = (props) => {
   return (
     <Nav>
       <NavLink exact className={"nav-link pr-0"} to={props.isLogged ? '/logOut' : '/logIn'} onClick={logOut}>
-        {props.isLogged ? 'LogOut' : 'LogIn'}/
+        {props.isLogged ? 'LogOut' : 'LogIn'}
       </NavLink>
       <NavLink hidden={props.isLogged} className={"nav-link pl-0"} to="/register">
-        Register
+        /Register
       </NavLink>
     </Nav>
   );
@@ -57,6 +57,9 @@ const Header = (props) => {
           </NavLink>
           <NavLink className={"nav-link"} to="/ref">
             reference
+          </NavLink>
+          <NavLink exact className={"nav-link"} to="/myshare">
+            My shares
           </NavLink>
         </Nav>
         <LoginBox dispatch={dispatch} isLogged={isLogged} />

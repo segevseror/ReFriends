@@ -131,9 +131,12 @@ class HomePage extends Component {
             <Spinner animation="border" variant="success mt-3"/>
           </Col>
           <Col md={12} hidden={!this.state.submit}>
-            <Row>
+            <Row className={'justify-content-center mt-3'}>
+              <Col md={4}>
+                <h5><b>Share Movies with your Friends</b></h5>
+              </Col>
               <Col md={12} hidden={!this.state.submit}>
-                <Row className={"justify-content-center mt-3 mb-3"}>
+                <Row className={"justify-content-center mb-3"}>
                   <Col xl={4} md={6} sm={12}>
                     <Autocomplete
                       onKeyUp={this.handleSearch}

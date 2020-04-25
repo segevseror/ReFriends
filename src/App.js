@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import HomePage from "./temp/HomePage";
 import Ref from "./temp/Ref";
 import Login from "./temp/Login";
+import MyShare from "./temp/MyShare";
 import Header from "./temp/Header";
 import {Col, Container, Row} from "react-bootstrap";
 import "./App.css";
@@ -64,6 +65,7 @@ const App = () => {
               <Route path="/login" component={Login}/>
               <Route path="/register" component={Register}/>
               <ProtectedRoute path="/ref" component={Ref}/>
+              <ProtectedRoute path="/myshare" component={MyShare}/>
               <ProtectedRoute path="/" component={HomePage}/>
             </Switch>
           </Row> :
