@@ -1,10 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap");
 
 html,
-body {
+body{
   height: 100%;
   background-color: black;
   font-family: "Open Sans", sans-serif !important;
+  color: white;
+}
+input, input::-webkit-input-placeholder {
+  background: white !important;
+  color: black !important;
+}
+label{
+  color:rgb(121, 235, 255) !important;
+  z-index: 1;
+  font-size: 13px !important;
+  margin-left: 5px ;
+  align-items: center;
 }
 
 
