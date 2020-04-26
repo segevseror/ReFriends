@@ -12,11 +12,17 @@ input, input::-webkit-input-placeholder {
   color: black !important;
 }
 label{
-  color:rgb(121, 235, 255) !important;
+  color:black !important; ;
   z-index: 1;
   font-size: 13px !important;
   margin-left: 5px ;
   align-items: center;
+}
+.MuiFormLabel-filled{
+  color:white !important;
+}
+.MuiFormLabel-root.Mui-focused {
+  color:white !important;
 }
 
 
