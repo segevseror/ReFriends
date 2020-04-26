@@ -3,6 +3,7 @@ import {Button, Col, Row, Spinner} from "react-bootstrap";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import '../config';
+import {white} from "color-name";
 
 class HomePage extends Component {
   constructor(props) {
@@ -123,6 +124,7 @@ class HomePage extends Component {
   };
 
 
+
   render() {
     return (
       <Col md={12}>
@@ -132,7 +134,7 @@ class HomePage extends Component {
           </Col>
           <Col md={12} hidden={!this.state.submit}>
             <Row className={'justify-content-center mt-3'}>
-              <Col md={4}>
+              <Col md={4} style={{color: 'white'}}>
                 <h5><b>Share Movies with your Friends</b></h5>
               </Col>
               <Col md={12} hidden={!this.state.submit}>
