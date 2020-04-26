@@ -6,10 +6,20 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import {withStyles} from '@material-ui/core/styles';
+
+
+const GreenCheckbox = withStyles({
+    root: {
+        color: 'rgb(121, 235, 255)',
+        '&$checked': {
+            color: 'rgb(220, 0, 78)',
+        },
+    },
+    checked: {},
+})((props) => <Checkbox color="default" {...props} />);
 
 const CardMovies = props => {
-
-
 
     const CardDetailesRow = props => {
         const shereFriendsTitle = {
@@ -76,18 +86,20 @@ const CardMovies = props => {
         //align-items: center;
      `;
 
-    const fevorite = [];
-    const [fevor , setFevor] = useState([]);
 
+    const [state, setState] = React.useState([]);
     const handleChange = (event) => {
-        if(event.target.value){
-
+        if (event.target.checked) {
+            setState(state => ([
+                ...state, event.target.name
+            ]));
+        } else {
+            setState(state => ([
+                state.splice(event.target.name, 1)
+            ]));
         }
-        fevorite.push();
-        setFevor(fevorite);
-        console.log(fevor);
-
     };
+
 
 
     return (
@@ -95,8 +107,13 @@ const CardMovies = props => {
             <Row className={"m-0"} style={boxnovies}>
                 <AddFevorStyle>
                     <FormControlLabel
-                        control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} name="checkedH" onChange={handleChange} />}
+                        control={<GreenCheckbox icon={<FavoriteBorder/>} checkedIcon={<Favorite/>}
+                                            onClick={props.fev}    />}
                         label=""
+                        name={props.movies_id}
+                        checked={props.fevore}
+
+
                     />
                 </AddFevorStyle>
                 <Col md={12}>

@@ -3,6 +3,7 @@ import {Col, Row, Spinner} from "react-bootstrap";
 import CardMovies from './CardMovies';
 
 
+
 class Ref extends Component {
 
     constructor(props) {
@@ -30,7 +31,12 @@ class Ref extends Component {
 
         }
 
+
     }
+    test = (e) =>{
+
+        console.log('datestttttttttttt' , e.target.name , e.target.value);
+    };
 
     render() {
         return (
@@ -53,6 +59,8 @@ class Ref extends Component {
                                                        origin_date={value.origin_date}
                                                        cdate={value.cdate}
                                                        movies_id={value.id_movies}
+                                                       fevore={value.fevore}
+                                                       fev={this.test}
                                     />
                                 })
                             }
