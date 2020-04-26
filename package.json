@@ -23,7 +23,8 @@
     "react-scripts": "3.4.1",
     "react-select-search": "^1.0.2",
     "react-transition-group": "1.x",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "styled-components": "^5.1.0"
   },
   "scripts": {
     "start": "node server.js",
@@ -33,7 +34,7 @@
     "eject": "react-scripts eject"
   },
   "engines": {
-    "node": "12.16.2"
+    "node": "13.8.0"
   },
   "eslintConfig": {
     "extends": "react-app",
